@@ -229,6 +229,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://cookzhang.github.io/2018/11/15/i-o-multiplexing/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cookzhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cookzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/15/i-o-multiplexing/" itemprop="url">i/o-multiplexing</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-15T10:03:15+08:00">
+                2018-11-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/基础/" itemprop="url" rel="index">
+                    <span itemprop="name">基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#I/O多路复用</p>
+<p>####多路复用</p>
+<p>I/O多路复用指：通过一种机制，可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作.</p>
+<p>单个线程，通过记录跟踪每个I/O流(sock)的状态，来同时管理多个I/O流。</p>
+<p>####Linux<br>Linux中的 select，poll，epoll 都是IO多路复用的机制。</p>
+<p>####阻塞过程主要发生在两个阶段上：</p>
+<ul>
+<li>第一阶段：等待数据就绪；</li>
+<li>第二阶段：将已就绪的数据从内核缓冲区拷贝到用户空间；</li>
+</ul>
+<blockquote>
+<p>这里产生了一个从内核到用户空间的拷贝，主要是为了系统的性能优化考虑。假设，从网卡读到的数据直接返回给用户空间，那势必会造成频繁的系统中断，因为从网卡读到的数据不一定是完整的，可能断断续续的过来。通过内核缓冲区作为缓冲，等待缓冲区有足够的数据，或者读取完结后，进行一次的系统中断，将数据返回给用户，这样就能避免频繁的中断产生。</p>
+</blockquote>
+<blockquote>
+<p>了解了 I/O 阻塞的两个阶段,第一阶段的数据等待过程，我们是不需要关心的。不过该模型是频繁地去检查是否就绪，造成了 CPU 无效的处理，反而效果不好。如果有一种类似的好莱坞原则— “不要给我们打电话，我们会打给你” 。这样一个线程可以同时发起多个 I/O 调用，并且不需要同步等待数据就绪。在数据就绪完成的时候，会以事件的机制，来通知我们。这样不就实现了单线程同时处理多个 IO 调用的问题了吗？即所说的“I/O 多路复用模型”。</p>
+</blockquote>
+<p>JAVA NIO 我们可以理解为 缓冲区 数据就绪  通知程序进行读写操作</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://cookzhang.github.io/2018/11/12/first/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -382,14 +540,32 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
             
 
           </nav>
