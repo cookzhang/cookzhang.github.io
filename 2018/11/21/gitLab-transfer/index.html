@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="#gitLab迁移脚本 123456789101112131415import urllib2import osimport jsonrequest = urllib2.Request(&apos;http://gitlab.dev.daikuan.com/api/v3/projects?per_page=1500&amp;amp;page=1&apos;)request.add_header(&apos;PRIVATE-TOKEN&apos;">
+<meta name="description" content="gitLab迁移脚本123456789101112131415import urllib2import osimport jsonrequest = urllib2.Request(&apos;http://gitlab.dev.daikuan.com/api/v3/projects?per_page=1500&amp;amp;page=1&apos;)request.add_header(&apos;PRIVATE-TOKEN&apos;,">
 <meta name="keywords" content="shell,python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gitLab transfer">
 <meta property="og:url" content="https://cookzhang.github.io/2018/11/21/gitLab-transfer/index.html">
 <meta property="og:site_name" content="Cookzhang">
-<meta property="og:description" content="#gitLab迁移脚本 123456789101112131415import urllib2import osimport jsonrequest = urllib2.Request(&apos;http://gitlab.dev.daikuan.com/api/v3/projects?per_page=1500&amp;amp;page=1&apos;)request.add_header(&apos;PRIVATE-TOKEN&apos;">
+<meta property="og:description" content="gitLab迁移脚本123456789101112131415import urllib2import osimport jsonrequest = urllib2.Request(&apos;http://gitlab.dev.daikuan.com/api/v3/projects?per_page=1500&amp;amp;page=1&apos;)request.add_header(&apos;PRIVATE-TOKEN&apos;,">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-21T01:38:48.189Z">
+<meta property="og:updated_time" content="2018-11-21T01:42:59.222Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gitLab transfer">
-<meta name="twitter:description" content="#gitLab迁移脚本 123456789101112131415import urllib2import osimport jsonrequest = urllib2.Request(&apos;http://gitlab.dev.daikuan.com/api/v3/projects?per_page=1500&amp;amp;page=1&apos;)request.add_header(&apos;PRIVATE-TOKEN&apos;">
+<meta name="twitter:description" content="gitLab迁移脚本123456789101112131415import urllib2import osimport jsonrequest = urllib2.Request(&apos;http://gitlab.dev.daikuan.com/api/v3/projects?per_page=1500&amp;amp;page=1&apos;)request.add_header(&apos;PRIVATE-TOKEN&apos;,">
 
 
 
@@ -342,8 +342,7 @@
       
 
       
-        <p>#gitLab迁移脚本</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line">request = urllib2.Request(<span class="string">'http://gitlab.dev.daikuan.com/api/v3/projects?per_page=1500&amp;page=1'</span>)</span><br><span class="line">request.add_header(<span class="string">'PRIVATE-TOKEN'</span>, <span class="string">'htGXgTMyCBf2gmdFVqzn'</span>)</span><br><span class="line"></span><br><span class="line">html = urllib2.urlopen(request)</span><br><span class="line">hjson = json.loads(html.read())</span><br><span class="line"><span class="keyword">print</span>  len(hjson)</span><br><span class="line"><span class="keyword">for</span> tem <span class="keyword">in</span> hjson:</span><br><span class="line">    <span class="keyword">print</span> tem[<span class="string">'ssh_url_to_repo'</span>]</span><br><span class="line">    gitaddr= <span class="string">'%s %s;cd %s.git;git remote set-url origin ssh://git@git.taoche.com:52000/%s.git;git push --mirror;'</span>%(<span class="string">'git clone --mirror '</span>,tem[<span class="string">'ssh_url_to_repo'</span>],tem[<span class="string">'name'</span>],tem[<span class="string">'path_with_namespace'</span>])</span><br><span class="line">    <span class="keyword">print</span> gitaddr</span><br><span class="line">    os.system(gitaddr)</span><br></pre></td></tr></table></figure>
+        <h1 id="gitLab迁移脚本"><a href="#gitLab迁移脚本" class="headerlink" title="gitLab迁移脚本"></a>gitLab迁移脚本</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line">request = urllib2.Request(<span class="string">'http://gitlab.dev.daikuan.com/api/v3/projects?per_page=1500&amp;page=1'</span>)</span><br><span class="line">request.add_header(<span class="string">'PRIVATE-TOKEN'</span>, <span class="string">'htGXgTMyCBf2gmdFVqzn'</span>)</span><br><span class="line"></span><br><span class="line">html = urllib2.urlopen(request)</span><br><span class="line">hjson = json.loads(html.read())</span><br><span class="line"><span class="keyword">print</span>  len(hjson)</span><br><span class="line"><span class="keyword">for</span> tem <span class="keyword">in</span> hjson:</span><br><span class="line">    <span class="keyword">print</span> tem[<span class="string">'ssh_url_to_repo'</span>]</span><br><span class="line">    gitaddr= <span class="string">'%s %s;cd %s.git;git remote set-url origin ssh://git@git.taoche.com:52000/%s.git;git push --mirror;'</span>%(<span class="string">'git clone --mirror '</span>,tem[<span class="string">'ssh_url_to_repo'</span>],tem[<span class="string">'name'</span>],tem[<span class="string">'path_with_namespace'</span>])</span><br><span class="line">    <span class="keyword">print</span> gitaddr</span><br><span class="line">    os.system(gitaddr)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -436,8 +435,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -497,6 +505,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#gitLab迁移脚本"><span class="nav-number">1.</span> <span class="nav-text">gitLab迁移脚本</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
