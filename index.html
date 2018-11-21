@@ -484,13 +484,10 @@
       
         
           
-            <p>#I/O多路复用</p>
-<p>####多路复用</p>
-<p>I/O多路复用指：通过一种机制，可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作.</p>
+            <h1 id="I-O多路复用"><a href="#I-O多路复用" class="headerlink" title="I/O多路复用"></a>I/O多路复用</h1><h4 id="多路复用"><a href="#多路复用" class="headerlink" title="多路复用"></a>多路复用</h4><p>I/O多路复用指：通过一种机制，可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作.</p>
 <p>单个线程，通过记录跟踪每个I/O流(sock)的状态，来同时管理多个I/O流。</p>
-<p>####Linux<br>Linux中的 select，poll，epoll 都是IO多路复用的机制。</p>
-<p>####阻塞过程主要发生在两个阶段上：</p>
-<ul>
+<h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><p>Linux中的 select，poll，epoll 都是IO多路复用的机制。</p>
+<h4 id="阻塞过程主要发生在两个阶段上："><a href="#阻塞过程主要发生在两个阶段上：" class="headerlink" title="阻塞过程主要发生在两个阶段上："></a>阻塞过程主要发生在两个阶段上：</h4><ul>
 <li>第一阶段：等待数据就绪；</li>
 <li>第二阶段：将已就绪的数据从内核缓冲区拷贝到用户空间；</li>
 </ul>

@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="#I/O多路复用 ####多路复用 I/O多路复用指：通过一种机制，可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作. 单个线程，通过记录跟踪每个I/O流(sock)的状态，来同时管理多个I/O流。 ####LinuxLinux中的 select，poll，epoll 都是IO多路复用的机制。 ####阻塞过程主要发生在两个阶段上：  第一阶段：等待">
+<meta name="description" content="I/O多路复用多路复用I/O多路复用指：通过一种机制，可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作. 单个线程，通过记录跟踪每个I/O流(sock)的状态，来同时管理多个I/O流。 LinuxLinux中的 select，poll，epoll 都是IO多路复用的机制。 阻塞过程主要发生在两个阶段上： 第一阶段：等待数据就绪； 第二阶段：将已就绪的">
 <meta name="keywords" content="基础,系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="i&#x2F;o-multiplexing">
 <meta property="og:url" content="https://cookzhang.github.io/2018/11/15/i-o-multiplexing/index.html">
 <meta property="og:site_name" content="Cookzhang">
-<meta property="og:description" content="#I/O多路复用 ####多路复用 I/O多路复用指：通过一种机制，可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作. 单个线程，通过记录跟踪每个I/O流(sock)的状态，来同时管理多个I/O流。 ####LinuxLinux中的 select，poll，epoll 都是IO多路复用的机制。 ####阻塞过程主要发生在两个阶段上：  第一阶段：等待">
+<meta property="og:description" content="I/O多路复用多路复用I/O多路复用指：通过一种机制，可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作. 单个线程，通过记录跟踪每个I/O流(sock)的状态，来同时管理多个I/O流。 LinuxLinux中的 select，poll，epoll 都是IO多路复用的机制。 阻塞过程主要发生在两个阶段上： 第一阶段：等待数据就绪； 第二阶段：将已就绪的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-15T02:08:15.715Z">
+<meta property="og:updated_time" content="2018-11-21T01:45:49.365Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="i&#x2F;o-multiplexing">
-<meta name="twitter:description" content="#I/O多路复用 ####多路复用 I/O多路复用指：通过一种机制，可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作. 单个线程，通过记录跟踪每个I/O流(sock)的状态，来同时管理多个I/O流。 ####LinuxLinux中的 select，poll，epoll 都是IO多路复用的机制。 ####阻塞过程主要发生在两个阶段上：  第一阶段：等待">
+<meta name="twitter:description" content="I/O多路复用多路复用I/O多路复用指：通过一种机制，可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作. 单个线程，通过记录跟踪每个I/O流(sock)的状态，来同时管理多个I/O流。 LinuxLinux中的 select，poll，epoll 都是IO多路复用的机制。 阻塞过程主要发生在两个阶段上： 第一阶段：等待数据就绪； 第二阶段：将已就绪的">
 
 
 
@@ -342,13 +342,10 @@
       
 
       
-        <p>#I/O多路复用</p>
-<p>####多路复用</p>
-<p>I/O多路复用指：通过一种机制，可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作.</p>
+        <h1 id="I-O多路复用"><a href="#I-O多路复用" class="headerlink" title="I/O多路复用"></a>I/O多路复用</h1><h4 id="多路复用"><a href="#多路复用" class="headerlink" title="多路复用"></a>多路复用</h4><p>I/O多路复用指：通过一种机制，可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作.</p>
 <p>单个线程，通过记录跟踪每个I/O流(sock)的状态，来同时管理多个I/O流。</p>
-<p>####Linux<br>Linux中的 select，poll，epoll 都是IO多路复用的机制。</p>
-<p>####阻塞过程主要发生在两个阶段上：</p>
-<ul>
+<h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><p>Linux中的 select，poll，epoll 都是IO多路复用的机制。</p>
+<h4 id="阻塞过程主要发生在两个阶段上："><a href="#阻塞过程主要发生在两个阶段上：" class="headerlink" title="阻塞过程主要发生在两个阶段上："></a>阻塞过程主要发生在两个阶段上：</h4><ul>
 <li>第一阶段：等待数据就绪；</li>
 <li>第二阶段：将已就绪的数据从内核缓冲区拷贝到用户空间；</li>
 </ul>
@@ -455,8 +452,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -516,6 +522,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#I-O多路复用"><span class="nav-number">1.</span> <span class="nav-text">I/O多路复用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多路复用"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">多路复用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">Linux</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阻塞过程主要发生在两个阶段上："><span class="nav-number">1.0.0.3.</span> <span class="nav-text">阻塞过程主要发生在两个阶段上：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
