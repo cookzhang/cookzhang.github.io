@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="基础,系统,">
+  <meta name="keywords" content="kubernetes,harbor,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="I/O多路复用多路复用I/O多路复用指：通过一种机制，可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作. 单个线程，通过记录跟踪每个I/O流(sock)的状态，来同时管理多个I/O流。 LinuxLinux中的 select，poll，epoll 都是IO多路复用的机制。 阻塞过程主要发生在两个阶段上： 第一阶段：等待数据就绪； 第二阶段：将已就绪的">
-<meta name="keywords" content="基础,系统">
+<meta name="description" content="#kubernetes harbor https ttls 配置 docker login xxx.xx.xxx.xx会在当前用户目录下生成config.json文/root/.docker/config.json cat /root/.docker/config.json|base64 -w 0 生成registrykey-myhub.yml 12345678apiVersion: v1">
+<meta name="keywords" content="kubernetes,harbor">
 <meta property="og:type" content="article">
-<meta property="og:title" content="i&#x2F;o-multiplexing">
-<meta property="og:url" content="https://cookzhang.github.io/2018/11/15/i-o-multiplexing/index.html">
+<meta property="og:title" content="kubernetes harbor https ttls 配置">
+<meta property="og:url" content="https://cookzhang.github.io/2018/11/26/kubernetes-harbor-https-ttls-配置/index.html">
 <meta property="og:site_name" content="Cookzhang">
-<meta property="og:description" content="I/O多路复用多路复用I/O多路复用指：通过一种机制，可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作. 单个线程，通过记录跟踪每个I/O流(sock)的状态，来同时管理多个I/O流。 LinuxLinux中的 select，poll，epoll 都是IO多路复用的机制。 阻塞过程主要发生在两个阶段上： 第一阶段：等待数据就绪； 第二阶段：将已就绪的">
+<meta property="og:description" content="#kubernetes harbor https ttls 配置 docker login xxx.xx.xxx.xx会在当前用户目录下生成config.json文/root/.docker/config.json cat /root/.docker/config.json|base64 -w 0 生成registrykey-myhub.yml 12345678apiVersion: v1">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-21T01:45:49.365Z">
+<meta property="og:updated_time" content="2018-11-26T03:09:48.185Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="i&#x2F;o-multiplexing">
-<meta name="twitter:description" content="I/O多路复用多路复用I/O多路复用指：通过一种机制，可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作. 单个线程，通过记录跟踪每个I/O流(sock)的状态，来同时管理多个I/O流。 LinuxLinux中的 select，poll，epoll 都是IO多路复用的机制。 阻塞过程主要发生在两个阶段上： 第一阶段：等待数据就绪； 第二阶段：将已就绪的">
+<meta name="twitter:title" content="kubernetes harbor https ttls 配置">
+<meta name="twitter:description" content="#kubernetes harbor https ttls 配置 docker login xxx.xx.xxx.xx会在当前用户目录下生成config.json文/root/.docker/config.json cat /root/.docker/config.json|base64 -w 0 生成registrykey-myhub.yml 12345678apiVersion: v1">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://cookzhang.github.io/2018/11/15/i-o-multiplexing/">
+  <link rel="canonical" href="https://cookzhang.github.io/2018/11/26/kubernetes-harbor-https-ttls-配置/">
 
 
 
 
 
-  <title>i/o-multiplexing | Cookzhang</title>
+  <title>kubernetes harbor https ttls 配置 | Cookzhang</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://cookzhang.github.io/2018/11/15/i-o-multiplexing/">
+    <link itemprop="mainEntityOfPage" href="https://cookzhang.github.io/2018/11/26/kubernetes-harbor-https-ttls-配置/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cookzhang">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">i/o-multiplexing</h1>
+          <h1 class="post-title" itemprop="name headline">kubernetes harbor https ttls 配置</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-15T10:03:15+08:00">
-                2018-11-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-26T11:07:49+08:00">
+                2018-11-26
               </time>
             
 
@@ -305,8 +305,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/基础/" itemprop="url" rel="index">
-                    <span itemprop="name">基础</span>
+                  <a href="/categories/k8s/" itemprop="url" rel="index">
+                    <span itemprop="name">k8s</span>
                   </a>
                 </span>
 
@@ -342,20 +342,14 @@
       
 
       
-        <h1 id="I-O多路复用"><a href="#I-O多路复用" class="headerlink" title="I/O多路复用"></a>I/O多路复用</h1><h4 id="多路复用"><a href="#多路复用" class="headerlink" title="多路复用"></a>多路复用</h4><p>I/O多路复用指：通过一种机制，可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作.</p>
-<p>单个线程，通过记录跟踪每个I/O流(sock)的状态，来同时管理多个I/O流。</p>
-<h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><p>Linux中的 select，poll，epoll 都是IO多路复用的机制。</p>
-<h4 id="阻塞过程主要发生在两个阶段上："><a href="#阻塞过程主要发生在两个阶段上：" class="headerlink" title="阻塞过程主要发生在两个阶段上："></a>阻塞过程主要发生在两个阶段上：</h4><ul>
-<li>第一阶段：等待数据就绪；</li>
-<li>第二阶段：将已就绪的数据从内核缓冲区拷贝到用户空间；</li>
-</ul>
-<blockquote>
-<p>这里产生了一个从内核到用户空间的拷贝，主要是为了系统的性能优化考虑。假设，从网卡读到的数据直接返回给用户空间，那势必会造成频繁的系统中断，因为从网卡读到的数据不一定是完整的，可能断断续续的过来。通过内核缓冲区作为缓冲，等待缓冲区有足够的数据，或者读取完结后，进行一次的系统中断，将数据返回给用户，这样就能避免频繁的中断产生。</p>
-</blockquote>
-<blockquote>
-<p>了解了 I/O 阻塞的两个阶段,第一阶段的数据等待过程，我们是不需要关心的。不过该模型是频繁地去检查是否就绪，造成了 CPU 无效的处理，反而效果不好。如果有一种类似的好莱坞原则— “不要给我们打电话，我们会打给你” 。这样一个线程可以同时发起多个 I/O 调用，并且不需要同步等待数据就绪。在数据就绪完成的时候，会以事件的机制，来通知我们。这样不就实现了单线程同时处理多个 IO 调用的问题了吗？即所说的“I/O 多路复用模型”。</p>
-</blockquote>
-<p>JAVA NIO 我们可以理解为 缓冲区 数据就绪  通知程序进行读写操作</p>
+        <p>#kubernetes harbor https ttls 配置</p>
+<p>docker login xxx.xx.xxx.xx<br>会在当前用户目录下生成config.json文<br>/root/.docker/config.json</p>
+<p>cat /root/.docker/config.json|base64 -w 0</p>
+<p>生成registrykey-myhub.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">    kind:</span> <span class="string">Secret</span></span><br><span class="line"><span class="attr">    metadata:</span></span><br><span class="line"><span class="attr">      name:</span> <span class="string">registrykey-myhub</span></span><br><span class="line"><span class="attr">      namespace:</span> <span class="string">default</span></span><br><span class="line"><span class="attr">    type:</span> <span class="string">kubernetes.io/dockerconfigjson</span></span><br><span class="line"><span class="attr">    data:</span></span><br><span class="line">      <span class="string">.dockerconfigjson:</span> <span class="string">ewoJImF1dGhzIjogewoJCSJodHRwczovL215aHViLmZkY2Nsb3VkLmNvbS8iOiB7CgkJCSJhdXRoIjogIllXUnRhVzQ2VFhsemIyWjBPVFU1TXpnPSIsCgkJCSJlbWFpbCI6ICJ5YW53MDJAbXlzb2Z0LmNvbS5jbiIKCQl9Cgl9Cn0=</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建secret：</span></span><br><span class="line">kubectl create -f registrykey-myhub.yml</span><br></pre></td></tr></table></figure>
+<p>创建pod时指定imagePullSecrets<br>如下：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">ues-console-pod</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">dev</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  containers:</span></span><br><span class="line"><span class="attr">  - name:</span> <span class="string">ues-console</span></span><br><span class="line"><span class="attr">    image:</span> <span class="number">192.168</span><span class="number">.177</span><span class="number">.217</span><span class="string">/pay-admin/ues-console:dc-127-ues-console_mysql_build_20181123.2</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="attr">    - containerPort:</span> <span class="number">8194</span></span><br><span class="line"><span class="attr">      hostPort:</span> <span class="number">8194</span></span><br><span class="line"><span class="attr">  imagePullSecrets:</span></span><br><span class="line"><span class="attr">  - name:</span> <span class="string">registrykey-myhub</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -373,9 +367,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/基础/" rel="tag"># 基础</a>
+            <a href="/tags/kubernetes/" rel="tag"># kubernetes</a>
           
-            <a href="/tags/系统/" rel="tag"># 系统</a>
+            <a href="/tags/harbor/" rel="tag"># harbor</a>
           
         </div>
       
@@ -388,8 +382,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/12/first/" rel="next" title="first">
-                <i class="fa fa-chevron-left"></i> first
+              <a href="/2018/11/21/gitLab-transfer/" rel="next" title="gitLab transfer">
+                <i class="fa fa-chevron-left"></i> gitLab transfer
               </a>
             
           </div>
@@ -397,10 +391,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/21/gitLab-transfer/" rel="prev" title="gitLab transfer">
-                gitLab transfer <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -452,17 +442,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -522,22 +503,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#I-O多路复用"><span class="nav-number">1.</span> <span class="nav-text">I/O多路复用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多路复用"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">多路复用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">Linux</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阻塞过程主要发生在两个阶段上："><span class="nav-number">1.0.0.3.</span> <span class="nav-text">阻塞过程主要发生在两个阶段上：</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
