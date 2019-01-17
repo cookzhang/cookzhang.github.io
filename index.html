@@ -249,6 +249,200 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://cookzhang.github.io/2019/01/17/JVM-Virtual-Machine-Options/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cookzhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cookzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/17/JVM-Virtual-Machine-Options/" itemprop="url">JVM Virtual Machine Options</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-17T11:27:27+08:00">
+                2019-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JVM虚拟机选项"><a href="#JVM虚拟机选项" class="headerlink" title="JVM虚拟机选项"></a>JVM虚拟机选项</h1><ul>
+<li><p>-Xms128m<br>表示JVM Heap(堆内存)最小尺寸128MB，初始分配</p>
+</li>
+<li><p>-Xmx512m<br>表示JVM Heap(堆内存)最大允许的尺寸512MB，按需分配</p>
+</li>
+<li><p>PermSize和MaxPermSize指明虚拟机为java永久生成对象（Permanate generation）<br>如，class对象、方法对象这些可反射（reflective）对象分配内存限制，这些内存不包括在Heap（堆内存）区之中。</p>
+</li>
+</ul>
+<h2 id="基本概念："><a href="#基本概念：" class="headerlink" title="基本概念："></a>基本概念：</h2><ul>
+<li><p>PermGen space：全称是Permanent Generation space，即永久代。就是说是永久保存的区域,用于存放Class和Meta信息，Class在被Load的时候被放入该区域，GC(Garbage Collection)应该不会对PermGen space进行清理，所以如果你的APP会LOAD很多CLASS的话，就很可能出现PermGen space错误。</p>
+</li>
+<li><p>Heap space：存放Instance。Java Heap分为3个区，Young即新生代，Old即老生代和Permanent。Young保存刚实例化的对象。当该区被填满时，GC会将对象移到Old区。Permanent区则负责保存反射对象。</p>
+</li>
+</ul>
+<h2 id="内存监控的方法："><a href="#内存监控的方法：" class="headerlink" title="内存监控的方法："></a>内存监控的方法：</h2><p>jmap -heap pid</p>
+<p>using thread-local object allocation.<br>Parallel GC with 4 thread(s)          //GC 方式</p>
+<pre><code> Heap Configuration:       //堆内存初始化配置
+ MinHeapFreeRatio=40     //对应jvm启动参数-XX:MinHeapFreeRatio设置JVM堆最小空闲比率(default 40)
+ MaxHeapFreeRatio=70  //对应jvm启动参数 -XX:MaxHeapFreeRatio设置JVM堆最大空闲比率(default 70)
+ MaxHeapSize=512.0MB  //对应jvm启动参数-XX:MaxHeapSize=设置JVM堆的最大大小
+ NewSize  = 1.0MB          //对应jvm启动参数-XX:NewSize=设置JVM堆的‘新生代’的默认大小
+ MaxNewSize =4095MB   //对应jvm启动参数-XX:MaxNewSize=设置JVM堆的‘新生代’的最大大小
+ OldSize  = 4.0MB            //对应jvm启动参数-XX:OldSize=&lt;value&gt;:设置JVM堆的‘老生代’的大小
+ NewRatio  = 8         //对应jvm启动参数-XX:NewRatio=:‘新生代’和‘老生代’的大小比率
+ SurvivorRatio = 8    //对应jvm启动参数-XX:SurvivorRatio=设置年轻代中Eden区与Survivor区的大小比值
+ PermSize= 16.0MB       //对应jvm启动参数-XX:PermSize=&lt;value&gt;:设置JVM堆的‘永生代’的初始大小
+ MaxPermSize=64.0MB  //对应jvm启动参数-XX:MaxPermSize=&lt;value&gt;:设置JVM堆的‘永生代’的最大大小
+
+
+  Heap Usage:               //堆内存分步
+  PS Young Generation
+  Eden Space:          //Eden区内存分布
+    capacity = 20381696 (19.4375MB)  //Eden区总容量
+    used     = 20370032 (19.426376342773438MB)  //Eden区已使用
+    free     = 11664 (0.0111236572265625MB)  //Eden区剩余容量
+    99.94277218147106% used  //Eden区使用比率
+ From Space:        //其中一个Survivor区的内存分布
+     capacity = 8519680 (8.125MB)
+     used     = 32768 (0.03125MB)
+     free     = 8486912 (8.09375MB)
+     0.38461538461538464% used
+To Space:            //另一个Survivor区的内存分布
+    capacity = 9306112 (8.875MB)
+    used     = 0 (0.0MB)
+    free     = 9306112 (8.875MB)
+    0.0% used
+PS Old Generation  //当前的Old区内存分布
+    capacity = 366280704 (349.3125MB)
+    used     = 322179848 (307.25464630126953MB)
+    free     = 44100856 (42.05785369873047MB)
+    87.95982001825573% used
+PS Perm Generation  //当前的 “永生代” 内存分布
+    capacity = 3
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://cookzhang.github.io/2018/11/26/kubernetes-harbor-https-ttls-配置/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -848,7 +1042,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -859,7 +1053,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -870,7 +1064,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -907,7 +1101,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
